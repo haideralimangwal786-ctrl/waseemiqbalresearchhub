@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getSectionData, createSectionData, updateSectionData, deleteSectionData } from '../services/api';
 import toast from 'react-hot-toast';
-import { Mail, Phone, Users, Plus, Trash2, Edit2, X, AlertTriangle, Save, GraduationCap } from 'lucide-react';
+import { Mail, Phone, Users, Plus, Trash2, Edit2, X, AlertTriangle, Save, GraduationCap , Loader2} from 'lucide-react';
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(true);
@@ -133,7 +133,7 @@ const ContactForm = () => {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
+    return <div className="flex justify-center items-center h-64"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   return (

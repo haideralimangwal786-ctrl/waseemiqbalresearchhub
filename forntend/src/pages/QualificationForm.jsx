@@ -5,7 +5,7 @@ import {
   GraduationCap, Globe, Cpu, Award, 
   Plus, Trash2, Edit2, X, AlertTriangle, 
   MapPin, Calendar, Building2, CheckCircle2 
-} from 'lucide-react';
+, Loader2} from 'lucide-react';
 
 const QualificationForm = () => {
   const [activeSubTab, setActiveSubTab] = useState('education');
@@ -345,7 +345,7 @@ const QualificationForm = () => {
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
+    return <div className="flex justify-center items-center h-64"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   return (

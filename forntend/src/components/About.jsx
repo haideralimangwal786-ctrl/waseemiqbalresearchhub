@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Quote, CheckCircle2, MapPin, Beaker } from 'lucide-react';
+import { Quote, CheckCircle2, MapPin, Beaker , Loader2} from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
@@ -58,7 +58,7 @@ const About = () => {
     return (
       <section className="pt-32 pb-24 bg-slate-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+          <Loader2 className="w-12 h-12 text-blue-600 animate-spin mb-4" />
           <p className="text-gray-500 dark:text-gray-400">Loading About section...</p>
         </div>
       </section>

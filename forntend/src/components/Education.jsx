@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Globe, Microscope, Plane } from 'lucide-react';
+import { Calendar, MapPin, Globe, Microscope, Plane , Loader2} from 'lucide-react';
 import 'animate.css';
 
 import { getSectionData } from '../services/api';
@@ -31,7 +31,7 @@ const Education = () => {
   }, []);
 
   if (loading) {
-    return <div className="flex justify-center items-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
+    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   return (
