@@ -1,57 +1,57 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const path = require('path');
-const auth = require('../middleware/auth'); // Secure upload route so only admins can upload
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
+const auth = require('../middleware/auth');
 
-// Storage configuration
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    let prefix = 'doc-';
-    if (file.mimetype.startsWith('image/')) prefix = 'img-';
-    if (file.mimetype.startsWith('video/')) prefix = 'vid-';
-    cb(null, prefix + uniqueSuffix + path.extname(file.originalname));
-  }
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-// File filter to accept images and document files
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = [
-    'image/jpeg', 'image/png', 'image/webp', 'image/gif', 
-    'application/pdf', 
-    'application/msword', 
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'video/mp4', 'video/webm', 'video/ogg', 'video/quicktime'
-  ];
-  if (allowedTypes.includes(file.mimetype) || file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
-    cb(null, true);
-  } else {
-    cb(new Error('Only images, PDFs, and Word documents are allowed!'), false);
-  }
-};
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+    // Cloudinary needs 'raw' for PDFs and docs
+    let resource_type = 'auto';
+    if (file.mimetype === 'application/pdf' || file.mimetype.startsWith('application/')) {
+      resource_type = 'raw';
+    }
+
+    return {
+      folder: 'waseemiqbal_portfolio',
+      resource_type: resource_type,
+      public_id: Date.now() + '-' + Math.round(Math.random() * 1e9),
+    };
+  },
+});
 
 const upload = multer({ 
   storage: storage,
-  fileFilter: fileFilter,
-  limits: { fileSize: 50 * 1024 * 1024 } // 50MB limit
+  limits: { fileSize: 50 * 1024 * 1024 } 
 });
 
-// POST /api/upload
-router.post('/', auth, upload.any(), (req, res) => {
+router.post('/', auth, (req, res, next) => {
+  // Check if Cloudinary is configured
+  if (!process.env.CLOUDINARY_CLOUD_NAME) {
+    return res.status(500).json({ message: "Cloudinary is not configured. Please add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET to your environment variables." });
+  }
+  next();
+}, upload.any(), (req, res) => {
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
     
-    const file = req.files[0];
-    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
+    // Cloudinary returns the uploaded file URL in the 'path' property
+    const fileUrl = req.files[0].path; 
     
     res.json({ url: fileUrl });
   } catch (error) {
+    console.error("Upload Error:", error);
     res.status(500).json({ message: error.message });
   }
 });
