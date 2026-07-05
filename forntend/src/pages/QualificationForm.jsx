@@ -344,9 +344,6 @@ const QualificationForm = () => {
     }
   };
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
 
   return (
     <div className="max-w-6xl mx-auto animate__animated animate__fadeIn">
@@ -423,7 +420,7 @@ const QualificationForm = () => {
                 Cancel
               </button>
               <button onClick={handleSaveModal} disabled={saving} className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-xl font-semibold transition-all shadow-sm flex items-center gap-2 cursor-pointer">
-                {saving ? 'Saving...' : 'Save Changes'}
+                {saving ? <><Loader2 className="w-4 h-4 animate-spin inline mr-2" />Saving...</> : 'Save Changes'}
               </button>
             </div>
           </div>

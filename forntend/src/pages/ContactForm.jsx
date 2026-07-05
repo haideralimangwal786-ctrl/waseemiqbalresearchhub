@@ -132,9 +132,6 @@ const ContactForm = () => {
     }
   };
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
 
   return (
     <div className="max-w-6xl mx-auto animate__animated animate__fadeIn space-y-8">
@@ -161,7 +158,7 @@ const ContactForm = () => {
               className="px-5 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-xl font-semibold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
             >
               <Save className="w-4 h-4" />
-              {isSavingContact ? 'Saving...' : 'Save Info'}
+              {isSavingContact ? <><Loader2 className="w-4 h-4 animate-spin inline mr-2" />Saving...</> : 'Save Info'}
             </button>
           </div>
 
@@ -298,7 +295,7 @@ const ContactForm = () => {
                 Cancel
               </button>
               <button onClick={handleSaveRefModal} disabled={savingRef} className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white rounded-xl font-semibold transition-all shadow-sm flex items-center gap-2 cursor-pointer">
-                {savingRef ? 'Saving...' : 'Save Reference'}
+                {savingRef ? <><Loader2 className="w-4 h-4 animate-spin inline mr-2" />Saving...</> : 'Save Reference'}
               </button>
             </div>
           </div>

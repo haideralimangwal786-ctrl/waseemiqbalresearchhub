@@ -29,9 +29,6 @@ const Experience = () => {
     fetchExperience();
   }, []);
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
 
   return (
     <section id="experience" className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">

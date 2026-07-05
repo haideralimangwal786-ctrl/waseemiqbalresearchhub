@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Users, Microscope, Leaf, Clock3, Users2, Beaker, Loader2 } from 'lucide-react';
+import { FileText, Users, Microscope, Leaf, Clock3, Users2, Beaker } from 'lucide-react';
 import { getSectionData } from '../services/api';
 import 'animate.css';
 
@@ -36,9 +36,6 @@ const OngoingResearch = () => {
     { icon: Leaf, label: "100%", desc: "Sustainability Focus" },
   ];
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
   return (
     <div className="w-full relative z-10 animate__animated animate__fadeIn">
 

@@ -54,9 +54,6 @@ const About = () => {
     fetchAbout();
   }, []);
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
 
   // Fallback data if none exists
   const a = about || {

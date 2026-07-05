@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getSectionData, updateSectionData, uploadImage } from '../services/api';
 import toast from 'react-hot-toast';
-import { Image, User, CheckCircle2, MapPin, Quote, Plus, Trash2, Milestone, BookOpen, Info, Loader2 } from 'lucide-react';
+import { Image, User, CheckCircle2, MapPin, Quote, Plus, Trash2, Milestone, BookOpen, Info } from 'lucide-react';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 import * as LucideIcons from 'lucide-react';
@@ -224,7 +224,6 @@ const AboutForm = () => {
     }
   };
 
-  if (loading) return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   if (!about) return <div className="text-center p-10 dark:text-white">No data found. Please seed the database.</div>;
 
   return (

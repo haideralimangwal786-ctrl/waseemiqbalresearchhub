@@ -21,9 +21,6 @@ const Events = () => {
     fetchEvents();
   }, []);
 
-  if (loading) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
-  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 pt-24 pb-20">

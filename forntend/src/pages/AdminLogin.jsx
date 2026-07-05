@@ -81,7 +81,7 @@ const AdminLogin = () => {
             disabled={loading}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-colors flex items-center justify-center disabled:opacity-50"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? <><Loader2 className="w-5 h-5 animate-spin inline mr-2" />Signing in...</> : 'Sign In'}
           </button>
         </form>
       </div>

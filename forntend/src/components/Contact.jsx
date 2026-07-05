@@ -49,7 +49,7 @@ const Contact = () => {
   };
 
   if (loading || !contactInfo) {
-    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
+    return <div className="flex justify-center items-center py-20 bg-slate-50 dark:bg-gray-900"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   return (
