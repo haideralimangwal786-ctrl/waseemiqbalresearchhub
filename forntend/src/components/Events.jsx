@@ -22,11 +22,7 @@ const Events = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-gray-900 pt-24 pb-12">
-        <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
-      </div>
-    );
+    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   return (
