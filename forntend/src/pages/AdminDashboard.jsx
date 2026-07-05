@@ -13,8 +13,17 @@ import SettingsForm from './SettingsForm';
 import EventForm from './EventForm';
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState('experience');
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem('adminActiveTab') || 'home';
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Update localStorage whenever tab changes
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    localStorage.setItem('adminActiveTab', tabId);
+    setIsMobileMenuOpen(false);
+  };
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -103,10 +112,7 @@ const AdminDashboard = () => {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => {
-                    setActiveTab(tab.id);
-                    setIsMobileMenuOpen(false);
-                  }}
+                  onClick={() => handleTabChange(tab.id)}
                   className={`w-full group flex items-center gap-4 px-4 py-3.5 rounded-2xl font-bold transition-all duration-300 relative overflow-hidden ${
                     isActive
                       ? 'text-white shadow-md shadow-indigo-500/25 border border-indigo-500/20'
