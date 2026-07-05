@@ -11,6 +11,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.set('trust proxy', 1);
 
 const fs = require('fs');
 const path = require('path');

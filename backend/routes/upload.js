@@ -48,7 +48,7 @@ router.post('/', auth, upload.any(), (req, res) => {
     }
     
     const file = req.files[0];
-    const fileUrl = `http://localhost:5000/uploads/${file.filename}`;
+    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
     
     res.json({ url: fileUrl });
   } catch (error) {
