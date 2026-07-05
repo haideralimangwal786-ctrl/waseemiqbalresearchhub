@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getSectionData, updateSectionData, uploadImage, uploadFile } from '../services/api';
 import toast from 'react-hot-toast';
-import { Image, User, BarChart3, Link2, Plus, Trash2, Tag, FileText, Upload, ExternalLink } from 'lucide-react';
+import { Image, User, BarChart3, Link2, Plus, Trash2, Tag, FileText, Upload, ExternalLink, Loader2 } from 'lucide-react';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 
 import * as LucideIcons from 'lucide-react';
@@ -313,7 +313,7 @@ const ProfileForm = () => {
     }
   };
 
-  if (loading) return <div className="text-center p-10 dark:text-white">Loading Profile...</div>;
+  if (loading) return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   if (!profile) return <div className="text-center p-10 dark:text-white">No profile found. Please seed the database.</div>;
 
   return (
