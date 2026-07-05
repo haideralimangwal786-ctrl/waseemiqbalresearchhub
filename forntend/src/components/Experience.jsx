@@ -31,7 +31,7 @@ const Experience = () => {
 
 
   return (
-    <section id="experience" className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
+    <section id="experience" className="py-24 bg-white dark:bg-gray-900 min-h-screen relative overflow-hidden">
       
       <div className="w-[90%] max-w-none mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

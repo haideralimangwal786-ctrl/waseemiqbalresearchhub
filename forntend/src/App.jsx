@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 // Public Components
@@ -19,11 +19,19 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 // Public Layout Wrapper
 const PublicLayout = ({ children }) => (
   <div className="bg-slate-50 dark:bg-gray-900 min-h-screen flex flex-col font-sans text-slate-900 dark:text-slate-50">
     <Navbar />
-    <main className="flex-grow">
+    <main className="flex-grow flex flex-col">
       {children}
     </main>
     <Footer />
@@ -33,6 +41,7 @@ const PublicLayout = ({ children }) => (
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Toaster position="top-right" />
       <Routes>
         {/* Admin Routes */}
