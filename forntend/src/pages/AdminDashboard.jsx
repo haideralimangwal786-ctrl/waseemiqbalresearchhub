@@ -71,10 +71,10 @@ const AdminDashboard = () => {
       )}
 
       {/* Glassmorphic Sidebar */}
-      <div className={`fixed inset-y-0 left-0 transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 w-72 bg-white/95 dark:bg-gray-900/95 md:bg-white/70 md:dark:bg-gray-900/60 backdrop-blur-2xl border-r border-gray-200/50 dark:border-gray-800/50 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-50 transition-transform duration-300 ease-in-out`}>
+      <div className={`fixed inset-y-0 right-0 transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:left-auto md:right-auto md:relative md:translate-x-0 w-72 bg-white/95 dark:bg-gray-900/95 md:bg-white/70 md:dark:bg-gray-900/60 backdrop-blur-2xl border-l md:border-l-0 md:border-r border-gray-200/50 dark:border-gray-800/50 flex flex-col shadow-[-4px_0_24px_rgba(0,0,0,0.05)] md:shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-50 transition-transform duration-300 ease-in-out`}>
         
         {/* Mobile Close Button */}
-        <div className="md:hidden absolute top-4 right-4">
+        <div className="md:hidden absolute top-4 left-4">
            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
              <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
            </button>
