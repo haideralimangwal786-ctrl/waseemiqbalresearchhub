@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getSectionData, createSectionData, updateSectionData, deleteSectionData, uploadFile } from '../services/api';
 import toast from 'react-hot-toast';
-import { Calendar as CalendarIcon, Plus, Trash2, Edit2, X, AlertTriangle, Image as ImageIcon, Link as LinkIcon, Upload, Loader2, PlayCircle , Loader2} from 'lucide-react';
+import { Calendar as CalendarIcon, Plus, Trash2, Edit2, X, AlertTriangle, Image as ImageIcon, Link as LinkIcon, Upload, Loader2, PlayCircle } from 'lucide-react';
 
 const EventForm = () => {
   const [events, setEvents] = useState([]);
