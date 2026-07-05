@@ -141,7 +141,7 @@ const Hero = () => {
 
   // Fallback profile object in array structure
   const p = profile || {
-    name: "Dr. Waseem Iqbal",
+    name: "",
     title: "",
     bio: "",
     institution: "",
@@ -150,8 +150,8 @@ const Hero = () => {
     socialLinks: [],
     researchAreas: [],
     images: {
-      profilePicture: "/profile.jpeg",
-      coverBanner: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2000&q=80"
+      profilePicture: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
+      coverBanner: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
     }
   };
 

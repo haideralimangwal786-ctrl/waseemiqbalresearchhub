@@ -55,12 +55,11 @@ const About = () => {
   }, []);
 
 
-  // Fallback data if none exists
   const a = about || {
     visionStatement: "",
-    aboutName: "Dr. Waseem Iqbal",
+    aboutName: "",
     aboutLocation: "",
-    aboutImage: "/about-profile.jpeg",
+    aboutImage: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
     researchFocus: [],
     coreCompetencies: [],
     academicJourney: []
