@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logoutAdmin } from '../services/api';
-import { LogOut, LayoutDashboard, Briefcase, BookOpen, Award, CheckCircle, GraduationCap, User, Info, Mail, Settings, Calendar, ShieldCheck } from 'lucide-react';
+import { LogOut, LayoutDashboard, Briefcase, BookOpen, Award, CheckCircle, GraduationCap, User, Info, Mail, Settings, Calendar, ShieldCheck, Menu, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ProfileForm from './ProfileForm';
 import AboutForm from './AboutForm';
@@ -14,6 +14,7 @@ import EventForm from './EventForm';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('experience');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -61,9 +62,24 @@ const AdminDashboard = () => {
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/20 dark:bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[40%] bg-blue-500/20 dark:bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
+
       {/* Glassmorphic Sidebar */}
-      <div className="w-72 bg-white/70 dark:bg-gray-900/60 backdrop-blur-2xl border-r border-gray-200/50 dark:border-gray-800/50 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-20 transition-all duration-300">
+      <div className={`fixed inset-y-0 left-0 transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 w-72 bg-white/95 dark:bg-gray-900/95 md:bg-white/70 md:dark:bg-gray-900/60 backdrop-blur-2xl border-r border-gray-200/50 dark:border-gray-800/50 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-50 transition-transform duration-300 ease-in-out`}>
         
+        {/* Mobile Close Button */}
+        <div className="md:hidden absolute top-4 right-4">
+           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+             <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+           </button>
+        </div>
+
         {/* Brand Area */}
         <div className="p-8 flex items-center gap-4 border-b border-gray-200/50 dark:border-gray-800/50">
           <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30 transform transition-transform hover:scale-105">
@@ -87,7 +103,10 @@ const AdminDashboard = () => {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setIsMobileMenuOpen(false);
+                  }}
                   className={`w-full group flex items-center gap-4 px-4 py-3.5 rounded-2xl font-bold transition-all duration-300 relative overflow-hidden ${
                     isActive
                       ? 'text-white shadow-md shadow-indigo-500/25 border border-indigo-500/20'
@@ -121,10 +140,21 @@ const AdminDashboard = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 h-screen overflow-y-auto relative z-10 scroll-smooth">
+      <div className="flex-1 h-screen overflow-y-auto relative z-10 scroll-smooth flex flex-col w-full md:w-auto">
         
+        {/* Mobile Header */}
+        <div className="md:hidden flex items-center justify-between bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 border-b border-gray-200/50 dark:border-gray-800/50 sticky top-0 z-30">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="text-indigo-600 dark:text-indigo-400 w-6 h-6" />
+            <h1 className="text-lg font-bold text-gray-900 dark:text-white">Admin Panel</h1>
+          </div>
+          <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors">
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
+
         {/* Dynamic Form Content */}
-        <div className="p-6 md:p-10 max-w-6xl mx-auto animate__animated animate__fadeIn">
+        <div className="p-4 md:p-6 lg:p-10 max-w-6xl mx-auto w-full animate__animated animate__fadeIn">
           {renderContent()}
         </div>
         
