@@ -142,25 +142,13 @@ const Hero = () => {
   // Fallback profile object in array structure
   const p = profile || {
     name: "Dr. Waseem Iqbal",
-    title: "Postdoctoral Researcher",
-    bio: "Dedicated materials scientist specializing in Metal-Organic Frameworks (MOFs) and their applications in environmental remediation and sustainable energy.",
-    institution: "Istituto Italiano di Tecnologia (IIT)",
-    location: "Italy",
-    stats: [
-      { label: "Publications", value: "25+", icon: "BookOpen" },
-      { label: "Citations", value: "1000+", icon: "TrendingUp" },
-      { label: "Countries Visited", value: "5+", icon: "Globe" },
-      { label: "Respected Awards", value: "10+", icon: "Award" }
-    ],
-    socialLinks: [
-      { platform: "ResearchGate", url: "https://www.researchgate.net/profile/Waseem-Iqbal-11", icon: "SiResearchgate" },
-      { platform: "Google Scholar", url: "https://scholar.google.com/citations?user=T2KKbmAAAAAJ&hl=it", icon: "SiGooglescholar" },
-      { platform: "ORCID", url: "https://orcid.org/0000-0003-3331-509X", icon: "FaOrcid" },
-      { platform: "LinkedIn", url: "https://www.linkedin.com/in/drwaseemiqbal/", icon: "FaLinkedin" }
-    ],
-    researchAreas: [
-      "MOF Research", "Water Remediation", "Electrocatalysis", "Membrane Science", "Photocatalysis"
-    ],
+    title: "",
+    bio: "",
+    institution: "",
+    location: "",
+    stats: [],
+    socialLinks: [],
+    researchAreas: [],
     images: {
       profilePicture: "/profile.jpeg",
       coverBanner: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2000&q=80"

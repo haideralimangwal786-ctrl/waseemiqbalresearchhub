@@ -7,13 +7,13 @@ import { getSectionData } from '../services/api';
 const Contact = () => {
   const [loading, setLoading] = React.useState(true);
   const [contactInfo, setContactInfo] = useState({
-    description1: 'I am always open to discussing research collaborations, postdoctoral opportunities, and scientific consulting.',
-    description2: 'Please feel free to reach out using the form below or via my direct contact information.',
-    email: 'waseem.iqbal@iit.it',
-    phone: '+39 010 8172 254',
-    address: 'Istituto Italiano di Tecnologia, Via Morego, 30, 16163 Genova, Italy',
-    officeHours: 'Monday - Friday, 9:00 AM - 5:00 PM (CET)',
-    locationLink: 'https://maps.app.goo.gl/r6H9PqWdJmBqTzT29'
+    description1: '',
+    description2: '',
+    email: '',
+    phone: '',
+    address: '',
+    officeHours: '',
+    locationLink: ''
   });
   const [referencesData, setReferencesData] = useState([]);
   

@@ -57,20 +57,13 @@ const About = () => {
 
   // Fallback data if none exists
   const a = about || {
-    visionStatement: "Advancing scientific innovation to drive the global transition toward clean energy, environmental protection, and resource recovery.",
+    visionStatement: "",
     aboutName: "Dr. Waseem Iqbal",
-    aboutLocation: "IIT, Italy",
+    aboutLocation: "",
     aboutImage: "/about-profile.jpeg",
-    researchFocus: [
-      "As a Postdoctoral Researcher at the Center for Sustainable Future Technologies, Istituto Italiano di Tecnologia (IIT), I tackle pressing environmental and energy challenges through the synthesis of innovative materials.",
-      "My expertise centers on Metal-Organic Frameworks (MOFs), Membrane Technologies, and Electrocatalysis."
-    ],
-    coreCompetencies: ["Advanced Material Synthesis", "Electrochemical Systems", "Analytical Characterization", "Water Remediation"],
-    academicJourney: [
-      { icon: "Globe", title: "Global Experience", subtitle: "Pak • Chn • Spa • Ita", description: "Multidisciplinary scientific research across international borders." },
-      { icon: "GraduationCap", title: "Ph.D. in Materials", subtitle: "Univ of Calabria", description: "Specialized in MOF technologies under an EU-funded scholarship." },
-      { icon: "Award", title: "High-Impact Pubs", subtitle: "Top-Tier Journals", description: "Published in ACS Catalysis, Applied Energy, and Advanced Science." }
-    ]
+    researchFocus: [],
+    coreCompetencies: [],
+    academicJourney: []
   };
 
   return (
