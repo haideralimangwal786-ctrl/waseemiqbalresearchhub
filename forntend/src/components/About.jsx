@@ -55,14 +55,7 @@ const About = () => {
   }, []);
 
   if (loading) {
-    return (
-      <section className="pt-32 pb-24 bg-slate-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center">
-          <Loader2 className="w-12 h-12 text-blue-600 animate-spin mb-4" />
-          <p className="text-gray-500 dark:text-gray-400">Loading About section...</p>
-        </div>
-      </section>
-    );
+    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   // Fallback data if none exists

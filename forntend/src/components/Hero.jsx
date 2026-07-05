@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Building, MapPin, ArrowRight, Download } from 'lucide-react';
+import { Building, MapPin, ArrowRight, Download, Loader2 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import * as FaIcons from 'react-icons/fa';
 import * as SiIcons from 'react-icons/si';
@@ -139,15 +139,7 @@ const Hero = () => {
   }, []);
 
   if (loading) {
-    return (
-      <section className="relative bg-slate-50 dark:bg-gray-900 pt-20 h-screen flex items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center">
-          <div className="w-32 h-32 bg-gray-200 dark:bg-gray-700 rounded-full mb-4"></div>
-          <div className="h-6 w-48 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-          <div className="h-4 w-32 bg-gray-200 dark:bg-gray-700 rounded"></div>
-        </div>
-      </section>
-    );
+    return <div className="flex justify-center items-center py-20"><Loader2 className="w-12 h-12 text-blue-600 animate-spin" /></div>;
   }
 
   // Fallback profile object in array structure
