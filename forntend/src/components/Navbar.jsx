@@ -99,6 +99,7 @@ const Navbar = () => {
               href={cvUrl || "#"} 
               target="_blank"
               rel="noopener noreferrer"
+              download="Dr_Waseem_Iqbal_CV.pdf"
               className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 overflow-hidden font-bold tracking-wide text-white bg-blue-600 rounded-full group"
             >
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-56 group-hover:h-56"></span>
@@ -174,6 +175,7 @@ const Navbar = () => {
             href={cvUrl || "#"} 
             target="_blank"
             rel="noopener noreferrer"
+            download="Dr_Waseem_Iqbal_CV.pdf"
             onClick={() => setIsMobileMenuOpen(false)}
             className="w-full flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-colors"
           >
