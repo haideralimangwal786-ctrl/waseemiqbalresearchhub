@@ -123,8 +123,8 @@ const QualificationForm = () => {
         await createSectionData(activeSubTab, payload);
         toast.success('Created successfully!', { id: toastId });
       }
-      closeModal();
       await fetchAllData();
+      closeModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to save data', { id: toastId });
@@ -139,8 +139,8 @@ const QualificationForm = () => {
     try {
       await deleteSectionData(activeSubTab, deleteTarget);
       toast.success('Deleted successfully!', { id: toastId });
-      closeDeleteModal();
       await fetchAllData();
+      closeDeleteModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to delete data', { id: toastId });

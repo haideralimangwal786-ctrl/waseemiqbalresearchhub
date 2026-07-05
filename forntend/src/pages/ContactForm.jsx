@@ -108,8 +108,8 @@ const ContactForm = () => {
         await createSectionData('references', editingRef);
         toast.success('Created successfully!', { id: toastId });
       }
-      closeModal();
       await fetchAllData();
+      closeModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to save reference', { id: toastId });
@@ -124,8 +124,8 @@ const ContactForm = () => {
     try {
       await deleteSectionData('references', deleteTarget);
       toast.success('Deleted successfully!', { id: toastId });
-      closeDeleteModal();
       await fetchAllData();
+      closeDeleteModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to delete reference', { id: toastId });

@@ -75,8 +75,8 @@ const ExperienceForm = () => {
         toast.success('Created successfully!', { id: toastId });
       }
       
-      closeModal();
       await fetchData();
+      closeModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to save data', { id: toastId });
@@ -91,8 +91,8 @@ const ExperienceForm = () => {
     try {
       await deleteSectionData('experience', deleteTarget);
       toast.success('Deleted successfully!', { id: toastId });
-      closeDeleteModal();
       await fetchData();
+      closeDeleteModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to delete data', { id: toastId });

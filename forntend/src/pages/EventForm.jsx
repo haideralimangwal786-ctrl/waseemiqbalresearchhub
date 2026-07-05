@@ -109,8 +109,8 @@ const EventForm = () => {
         await createSectionData('events', editingItem);
         toast.success('Created successfully!', { id: toastId });
       }
-      closeModal();
       await fetchEvents();
+      closeModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to save event', { id: toastId });
@@ -125,8 +125,8 @@ const EventForm = () => {
     try {
       await deleteSectionData('events', deleteTarget);
       toast.success('Deleted successfully!', { id: toastId });
-      closeDeleteModal();
       await fetchEvents();
+      closeDeleteModal();
     } catch (error) {
       console.error(error);
       toast.error('Failed to delete event', { id: toastId });
