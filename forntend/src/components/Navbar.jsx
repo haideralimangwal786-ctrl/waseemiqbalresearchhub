@@ -2,19 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronRight, Home, User, Microscope, BookOpen, Users, MailIcon, Globe, Award, Download, Calendar } from 'lucide-react';
 import Logo from './Logo';
+import { getSectionData } from '../services/api';
 import 'animate.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cvUrl, setCvUrl] = useState('');
   const location = useLocation();
 
-  // Handle scroll effect for glassmorphism
+  // Handle scroll effect and fetch CV
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    
+    const fetchProfile = async () => {
+      try {
+        const data = await getSectionData('profile');
+        if (data && data.length > 0 && data[0].cvUrl) {
+          setCvUrl(data[0].cvUrl);
+        }
+      } catch (err) {
+        console.error("Failed to fetch CV link for Navbar", err);
+      }
+    };
+    fetchProfile();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -81,8 +96,9 @@ const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center z-50">
             <a 
-              href="/DrWaseemIqbal_CV.pdf" 
-              download 
+              href={cvUrl || "#"} 
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 overflow-hidden font-bold tracking-wide text-white bg-blue-600 rounded-full group"
             >
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-56 group-hover:h-56"></span>
@@ -155,8 +171,9 @@ const Navbar = () => {
 
         <div className="p-6 border-t border-gray-200 dark:border-gray-800">
           <a 
-            href="/DrWaseemIqbal_CV.pdf" 
-            download 
+            href={cvUrl || "#"} 
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
             className="w-full flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-500/30 transition-colors"
           >
